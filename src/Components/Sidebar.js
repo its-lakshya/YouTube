@@ -9,8 +9,8 @@ const Sidebar = () => {
     //Earny return  
     if(!isMenuOpen) return null;
     return (
-        <div className="col-span-1 shadow-lg">
-            <ul>
+        <div className="w-56 shadow-lg overflow-hidden">
+            <ul className="">
                 <li>Home</li>
                 <li>Shorts</li>
                 <li>Subscriptions</li>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {toggleMenu} from "../Utils/appSlice"
+import {toggleMenu} from "../Utils/appSlice";
 
 
 const Head = () => {
@@ -10,18 +10,18 @@ const Head = () => {
 
   }
   return (
-    <div className="grid grid-flow-col p-2 m-2 shadow-lg justify-between">
+    <div className="grid grid-flow-col p-2  shadow-lg justify-between">
       <div className="flex flex-row cursor-pointer">
         <img
         onClick = {() => {
           toggleMenuHandler()
         }}
-        className="h-12 col-span-1"
+        className="h-10 mx-2 col-span-1"
           alt="menu"
           src="https://icon-library.com/images/hamburger-menu-icon-svg/hamburger-menu-icon-svg-8.jpg"
         />
         <img
-        className="h-8 mx-2 my-1.5"
+        className="h-6 mx-2.5 my-1.5"
           alt="logo"
           src="https://www.caffelena.org/wp-content/uploads/2019/10/new-youtube-logo-e1570929090859-1024x256.jpg"
         />
