@@ -12,7 +12,13 @@ const Head = () => {
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
 
-  // console.log(searchQuery);
+
+  /*
+    searchCache{
+      "iphone":["iphone 11", "iphone 14"]
+    }
+    searchQuery:iphone
+  */
 
   useEffect(() => {
     const timer = setTimeout(() => {
