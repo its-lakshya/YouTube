@@ -1,7 +1,7 @@
 import React from "react";
 
 const Comments = ({ data }) => {
-  const { name, text, replies } = data;
+  const { name, text } = data;
   return (
     <div className="flex pt-5 bg-gray-100 m-2 p-1 ">
       <img
