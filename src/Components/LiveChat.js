@@ -38,7 +38,7 @@ const LiveChat = () => {
         e.preventDefault();
         console.log("ON Form Submit", liveMessage)
         dispatch(addMessage({
-          name:"Lakshya Kumar",
+          name:"Lakshya Kumar Verma",
           message:liveMessage, 
         }))
         setLiveMessage("")

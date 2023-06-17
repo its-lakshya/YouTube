@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../Utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../Utils/constants";
 import { cacheResults } from "../Utils/searchSlice";
+import { BiMenu } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
+import { BsFillMicFill } from "react-icons/bs";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { BiUser } from "react-icons/bi";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,7 +16,6 @@ const Head = () => {
 
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
-
 
   /*
     searchCache{
@@ -25,8 +29,7 @@ const Head = () => {
       if (searchCache[searchQuery]) {
         setSuggestions(searchCache[searchQuery]);
       } else {
-        if(showSuggestions)
-        getSearchSuggestions();
+        if (showSuggestions) getSearchSuggestions();
       }
     }, 200);
 
@@ -52,15 +55,13 @@ const Head = () => {
     dispatch(toggleMenu());
   };
   return (
-    <div className="grid grid-flow-col p-2  shadow-lg justify-between">
-      <div className="flex flex-row cursor-pointer">
-        <img
+    <div className="flex justify-between h-14 mt-2 relative">
+      <div className="flex cursor-pointer ">
+        <BiMenu
+          className="text-3xl ml-6 mt-1 mr-3"
           onClick={() => {
             toggleMenuHandler();
           }}
-          className="h-10 mx-2 col-span-1"
-          alt="menu"
-          src="https://icon-library.com/images/hamburger-menu-icon-svg/hamburger-menu-icon-svg-8.jpg"
         />
         <img
           className="h-6 mx-2.5 my-1.5"
@@ -68,10 +69,10 @@ const Head = () => {
           src="https://www.caffelena.org/wp-content/uploads/2019/10/new-youtube-logo-e1570929090859-1024x256.jpg"
         />
       </div>
-      <div className="col-span-10">
-        <div>
+      <div className="flex flex-row justify-between">
+        <div className="w-[42rem] flex h-10 ">
           <input
-            className="w-1/2 border border-gray-600 rounded-l-2xl p-1.5 px-4"
+            className="w-[36rem] border border-gray-300 rounded-l-2xl "
             type="text"
             value={searchQuery}
             onChange={(e) => {
@@ -84,13 +85,13 @@ const Head = () => {
               setShowSuggestions(false);
             }}
           />
-          <button className="p-2.5  border border-gray-600 rounded-r-2xl">
-            <img
-              className="w-4"
-              alt="search-btn"
-              src="https://www.downloadclipart.net/large/search-button-png-image-free-download.png"
-            />
+          <button className=" border border-gray-300 rounded-r-2xl flex w-16 bg-gray-50 hover:bg-gray-200">
+            {/* <BiSearch className="text-2xl p-1 border border-gray-600 rounded-r-2xl"/> */}
+            <BiSearch className="mt-2 ml-5 text-2xl" />
           </button>
+          <span className=" w-10 h-10 ml-1 rounded-3xl hover:bg-gray-200">
+            <BsFillMicFill className="ml-2 mt-3 text-xl" />
+          </span>
         </div>
         {showSuggestions && (
           <div className="bg-white w-1/3 rounded-lg shadow-lg my-2 border border-gray-100 px-4 absolute">
@@ -102,12 +103,13 @@ const Head = () => {
           </div>
         )}
       </div>
-      <div>
-        <img
-          className="h-10 col-span-1"
-          alt="user"
-          src="https://static.vecteezy.com/system/resources/previews/000/574/512/original/vector-sign-of-user-icon.jpg"
-        />
+
+      <div className="flex justify-between">
+        <BsThreeDotsVertical className="text-xl mt-3" />
+        <div className="flex border border-gray-200 ml-4 mt-1 h-9 mr-4 w-24 justify-center rounded-3xl">
+        <BiUser className="mt-2 text-xl" /> 
+        <span className="ml-2 mt-1" >Sign in</span>
+        </div>
       </div>
     </div>
   );
