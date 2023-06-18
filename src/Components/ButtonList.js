@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 
 const ButtonList = ()=>{
-    const list = ['All', 'Music', 'Songs', 'News', 'Cricket', 'Football', "Games", "World Cup", "Coding", "Laptop"]
+    const list = ['All', 'Music', 'Songs', 'News', 'Cricket', 'Football', "Games", "World Cup", "Coding", "Laptop", "Horror", "React", "T-Series", "Dramedy", "Gadgets"]
     return (
         <div className="flex flex-row justify-center">
             {list.map((e) => {

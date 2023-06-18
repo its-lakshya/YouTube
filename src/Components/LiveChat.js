@@ -13,6 +13,8 @@ const LiveChat = () => {
 
   const [liveMessage, setLiveMessage] = useState("");
 
+  const isThemeDark = useSelector((store)=> store.theme.isThemeDark);
+
   useEffect(() => {
     const i = setInterval(() => {
       dispatch(
@@ -28,12 +30,12 @@ const LiveChat = () => {
 
   return (
     <>
-      <div className=" w-full h-[570px] border border-black ml-3 bg-slate-100 rounded-lg overflow-y-scroll flex flex-col-reverse">
+      <div className={(isThemeDark)?"bg-white bg-opacity-10 text-white  w-full h-[570px] border border-gray-300 ml-3  rounded-lg overflow-y-scroll flex flex-col-reverse":" w-full h-[570px] border border-white ml-3 bg-gray-200 rounded-lg overflow-y-scroll flex flex-col-reverse"}>
         {chatMessages.map((c, index) => (
           <ChatMessage key={index} name={c.name} message={c.message} />
         ))}
       </div>
-      <form className="w-full mx-3 border border-black rounded-lg flex justify-evenly bg-green-50"
+      <form className={(isThemeDark?"w-full mx-3 border border-gray-300 rounded-lg flex justify-evenly bg-inherit text-white":"w-full mx-3 border border-black rounded-lg flex justify-evenly bg-inherit")}
       onSubmit={(e)=>{
         e.preventDefault();
         console.log("ON Form Submit", liveMessage)
@@ -44,14 +46,14 @@ const LiveChat = () => {
         setLiveMessage("")
       }}>
         <input
-          className="w-72 bg-green-50"
+          className="w-72 bg-inherit"
           type="text"
           value={liveMessage}
           onChange={(e) => {
             setLiveMessage(e.target.value);
           }}
         />
-        <button className="w-24 border border-black bg-green-200 rounded-md">
+        <button className="w-24 border border-black bg-blue-200 rounded-md">
           Send
         </button>
       </form>

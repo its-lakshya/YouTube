@@ -6,6 +6,8 @@ export const YOUTUBE_SEARCH_API = "http://suggestqueries.google.com/complete/sea
 
 export const LIVE_CHAT_COUNT = 10;
 
+// https://cors-anywhere.herokuapp.com/{type_your_url_here} // this is the method to avoid cors error
+
 // Authorization: Bearer [YOUR_ACCESS_TOKEN]
 // Accept: application/json
 // ;
