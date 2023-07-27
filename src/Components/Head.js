@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../Utils/appSlice";
-import { YOUTUBE_SEARCH_API } from "../Utils/constants";
+import { SEARCH_API_FIRST_PART, SEARCH_API_SECOND_PART } from "../Utils/constants";
 import { cacheResults } from "../Utils/searchSlice";
 import { BiMenu } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
@@ -33,6 +33,7 @@ const Head = () => {
   */
 
   useEffect(() => {
+    // getSearchSuggestions()
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
         setSuggestions(searchCache[searchQuery]);
@@ -46,15 +47,28 @@ const Head = () => {
     };
   }, [searchQuery]);
 
+  // const getSearchSuggestions = async () => {
+  //   const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+  //   const json = await data.json();
+  //   console.log(json[1]);
+  //   setSuggestions(json[1]);
+
+  //   dispatch(
+  //     cacheResults({
+  //       [searchQuery]: json[1],
+  //     })
+  //   );
+  // };
   const getSearchSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const data = await fetch(SEARCH_API_FIRST_PART + searchQuery + SEARCH_API_SECOND_PART);
     const json = await data.json();
-    // console.log(json[1]);
-    setSuggestions(json[1]);
+    console.log(json.items);
+    setSuggestions(json.items);
+    console.log(suggestions)
 
     dispatch(
       cacheResults({
-        [searchQuery]: json[1],
+        [searchQuery]: json.items,
       })
     );
   };
@@ -114,11 +128,11 @@ const Head = () => {
             <BsFillMicFill className="ml-[0.60rem] mt-3 text-xl" />
           </span>
         </div>
-        {showSuggestions && (
-          <div className={"bg-inherit w-1/3 rounded-2xl shadow-lg mt-12  border border-gray-200 px-4 absolute" }>
+        {showSuggestions && suggestions.length!==0 && (
+          <div className={"bg-inherit w-1/3 rounded-2xl shadow-lg mt-12  border border-gray-200 px-4 absolute h-96 overflow-y-scroll" }>
             <ul className={"[&>*:hover]:bg-gray-200 cursor-default [&>*:hover]:w-full" }>
-              {suggestions.map((s) => (
-                <li key={s}>{s}</li>
+              {suggestions.map((item) => (
+                <li className='border-b h-[1.8rem] overflow-hidden' key={item.etag}>{item.snippet.title}</li>
               ))}
             </ul>
           </div>

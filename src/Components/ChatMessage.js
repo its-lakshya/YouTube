@@ -7,6 +7,7 @@ const ChatMessage = ({ name, message }) => {
       <div className="flex items-start py-2 px-2 overflow-hidden justify-around">
         <div>
         <FaUserCircle className="text-2xl mt-1 " />
+        
         </div>        
         <div className="px-2  flex flex-col justify-evenly">
           <span className="font-bold">{name}</span>
