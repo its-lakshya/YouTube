@@ -15,14 +15,13 @@ const VideoContainer = () => {
     const Json = await data.json();
     setVideos(Json.items);
   };
-  // console.log(videos[0])
-  // if(videos) return console.log(videos[0])
+
   if (videos)
     return (
       <div className="flex flex-wrap justify-center mt-8" >
         {videos.map((video) => {
           return (
-            <Link to={"/watch?v="+video.id} key={video.id} >
+            <Link to={"/watch?v="+video.id} key={video.id}>
               <VideoCard info={video} />
             </Link>
           );

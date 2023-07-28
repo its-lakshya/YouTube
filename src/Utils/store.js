@@ -3,6 +3,7 @@ import appSlice from "./appSlice";
 import searchSlice from "./searchSlice"
 import chatSlice from "./chatSlice";
 import themeSlice from "./themeSlice";
+import VideoDescriptionSlice from "./VideoDescriptionSlice";
 
 
 
@@ -12,6 +13,7 @@ const store = configureStore({
         search:searchSlice,
         chat:chatSlice,
         theme:themeSlice,
+        VideoDescription:VideoDescriptionSlice,        
     },
 });
 

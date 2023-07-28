@@ -1,11 +1,19 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { addData } from '../Utils/VideoDescriptionSlice';
 
 const VideoCard = (props) => {
     // console.log(props.info)
     const {snippet, statistics} = props.info;
     const {channelTitle, title, thumbnails} = snippet;
+    const dispatch = useDispatch()
+
+    const clickHandler = () => {
+      dispatch(addData(props))
+    }
+
   return (
-    <div className=" mx-2 mb-8 w-[22rem] cursor-pointer container rounded-xl hover:rounded-none ">
+    <div className=" mx-2 mb-8 w-[22rem] cursor-pointer container rounded-xl hover:rounded-none " onClick={()=>clickHandler()}>
          <img className="rounded-xl hover:rounded-none w-[22rem]" alt="thumbnail" src={thumbnails.medium.url}/>
          <div className="flex flex-col w-30 overflow-hidden container">
             <span className="font-semibold max-w-28 overflow-hidden h-12">{title}</span>

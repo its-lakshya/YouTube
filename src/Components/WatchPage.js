@@ -4,11 +4,11 @@ import { closeMenu } from "../Utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
+import VideoDescription from "./VideoDescription";
 
 const WatchPage = () => {
   const dispatch = useDispatch();
   const [SearchParams] = useSearchParams();
-//   console.log(SearchParams.get("v"));
   useEffect(() => {
     dispatch(closeMenu());
   });
@@ -25,6 +25,7 @@ const WatchPage = () => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       ></iframe>
+      <VideoDescription/>
       </div>
       <div className="">
         <LiveChat/>
