@@ -7,7 +7,7 @@ const AppLayout = () => {
   const isThemeDark = useSelector((store) => store.theme.isThemeDark);
 
     return (
-      <div className={"flex flex-col bg-black" &&(isThemeDark? 'bg-black text-white' : "bg-white")}>
+      <div className={"flex flex-col bg-black w-full" &&(isThemeDark? 'bg-black text-white' : "bg-white") }>
         <Head />
         <Body />
       </div>

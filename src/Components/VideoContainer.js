@@ -18,7 +18,7 @@ const VideoContainer = () => {
 
   if (videos)
     return (
-      <div className="flex flex-wrap justify-center mt-8" >
+      <div className="flex flex-wrap justify-center mt-4 w-full" >
         {videos.map((video) => {
           return (
             <Link to={"/watch?v="+video.id} key={video.id}>
